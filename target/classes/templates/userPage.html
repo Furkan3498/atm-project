@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/userPage.css">
+    <link rel="stylesheet" href="/css/loader.css">
+
+</head>
+<body>
+
+
+<canvas id='canvas'></canvas>
+
+<div class="container-fluid">
+    <div class="row p-3">
+        <div class="col-md-2 card p-3">
+
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+                        <div class="card-header" id="userName"></div>
+                        <div class="card-body">
+                            <h5 class="card-title">Deposit amount</h5>
+                            <p class="card-text" id="userDepositAmount"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <form name="depositForm" th:action="@{/deposit}" method="POST">
+                        <div class="form-row align-items-center">
+                            <div class="col-8">
+                                <label class="sr-only" for="inlineFormInput1">Deposit amount</label>
+                                <input type="text" class="form-control mb-2" id="inlineFormInput1" placeholder="100$"
+                                       name='depositAmount'>
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" href="/deposit" class="btn btn-success w-100 mb-2">Deposit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form name="withdrawForm" th:action="@{/withdraw}" method="POST">
+                        <div class="form-row align-items-center">
+                            <div class="col-8">
+                                <label class="sr-only" for="inlineFormInput2">Withdraw amount</label>
+                                <input type="text" class="form-control mb-2" id="inlineFormInput2" placeholder="100$"
+                                       name='withdrawAmount'>
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" href="/deposit" class="btn btn-warning mb-2">Withdraw</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-12">
+                    <a href="/logout">
+                        <button class="p-2 m-1 btn btn-primary">Logout</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="/home">
+    <button id="goHomeButton" value="Submit" type="submit"
+            class="btn btn-light p-3 mt-3">Home
+    </button>
+</a>
+
+
+<script th:inline="javascript">
+        var user = JSON.parse('[[${ loggedInUser }]]');
+        var loggedInUserFullName = document.getElementById("userName");
+        loggedInUserFullName.innerHTML = (user.firstName +" "+user.lastName);
+        var loggedInUserDeposit = document.getElementById("userDepositAmount");
+        loggedInUserDeposit.innerHTML = user.deposit + " $";
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+<script type="module" src="/js/userPage.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+<div class="loader">
+    <div class="spinner spinner-3"></div>
+</div>
+
+<script>$(window).on("load", function() {$(".loader").fadeOut(800);});</script>
+
+</body>
+</html>

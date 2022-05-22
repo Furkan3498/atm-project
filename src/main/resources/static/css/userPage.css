@@ -1,0 +1,19 @@
+#canvas {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+html,
+body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#goHomeButton{
+    position:absolute;
+    bottom:3vh;
+    right:3vw;
+}

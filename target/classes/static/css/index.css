@@ -1,0 +1,39 @@
+#canvas {
+    height: 100vh;
+    width: 100%;
+   position:absolute;
+    overflow: hidden;
+    z-index:-100;
+}
+
+html, body {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+
+#redirectToRegister {
+    position:fixed;
+    bottom:7vh;
+    right:7vh;
+    font-size:2vw;
+}
+
+#redirectToLogin {
+    position:fixed;
+    bottom:7vh;
+    left:7vh;
+    font-size: 2vw;
+}
+
+.welcome-cont {
+    z-index: 100;
+    top: 20vh;
+    position: relative;
+}
+
+.welcome-cont h1 {
+    font-size: 10vw!important;
+    font-weight: 800;
+}
